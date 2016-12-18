@@ -5,6 +5,16 @@ var gulp = require('gulp'),
 var src = './process',
     app = './builds/app';
 
+var deploy = require('gulp-gh-pages');
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
+});
+
 gulp.task('js', function() {
   return gulp.src( src + '/js/app.js' )
     .pipe(browserify({
